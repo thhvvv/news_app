@@ -1,4 +1,4 @@
-mport os
+import os
 from app import create_app
 
 if os.path.exists('.env'):
@@ -9,4 +9,4 @@ if os.path.exists('.env'):
 app = create_app()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
