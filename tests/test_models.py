@@ -2,20 +2,22 @@
 import sys
 import os
 import unittest
-from app.models import Articles, Source
 
+# Ensure the app directory is in the path for module imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app.models import Articles, Source
 
 class TestArticles(unittest.TestCase):
     def setUp(self):
         self.new_article = Articles(
-            "John Doe",
-            "Test Article",
-            "This is a description of the test article.",
-            "http://example.com/article",
-            "http://example.com/image.jpg",
-            "2024-07-04T12:34:56Z",
-            "This is the content of the test article."
+            author="John Doe",
+            title="Test Article",
+            description="This is a description of the test article.",
+            url="http://example.com/article",
+            urlToImage="http://example.com/image.jpg",
+            publishedAt="2024-07-04T12:34:56Z",
+            content="This is the content of the test article."
         )
 
     def test_instance(self):
@@ -33,11 +35,11 @@ class TestArticles(unittest.TestCase):
 class TestSource(unittest.TestCase):
     def setUp(self):
         self.new_source = Source(
-            "test-id",
-            "Test Source",
-            "This is a description of the test source.",
-            "http://example.com/source",
-            "general"
+            id="test-id",
+            name="Test Source",
+            description="This is a description of the test source.",
+            url="http://example.com/source",
+            category="general"
         )
 
     def test_instance(self):

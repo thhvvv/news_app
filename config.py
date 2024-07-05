@@ -4,8 +4,8 @@ import os
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
-    NEWS_API_BASE_URL = 'https://newsapi.org/v2/sources?category={}&apiKey={}'
-    NEWS_ARTICLE_URL = 'https://newsapi.org/v2/everything?sources={}&apiKey={}'
+    NEWS_API_BASE_URL = 'https://newsapi.org/v2/everything?q=nytimes.com&apiKey={}'
+    NEWS_ARTICLE_URL = 'https://newsapi.org/v2/everything?sources=nytimes.com&apiKey={}'
 
 class DevelopmentConfig(Config):
     DEBUG = True

@@ -1,25 +1,25 @@
 #!/usr/bin/python3
 from flask import Flask
+from config import config_options
+from app.models import db
 from flask_bootstrap import Bootstrap
-from config import Config
+from flask_sqlalchemy import SQLAlchemy
 
-# Initialize Flask application instance
-app = Flask(__name__)
-app.config.from_object(Config)
+bootstrap = Bootstrap()
+db = SQLAlchemy()
 
-# Initialize Bootstrap
-bootstrap = Bootstrap(app)
-
-# Import routes and models (assuming they are defined in the app package)
-from app import routes, models
-
-# Function to create the app (optional, but useful for testing or modularization)
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)
-    Bootstrap(app)
+    app.config.from_object(config_options[config_name])
+    
+    # Initialize the database with the app
+    db.init_app(app)
+    bootstrap.init_app(app)
 
+    # Register blueprints
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     return app
+
+from app import routes, models

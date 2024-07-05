@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import urllib.request, json
-from app.models import Articles, Source
+from .models import Articles, Source
 
 apiKey = None
 base_url = None
